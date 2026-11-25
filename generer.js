@@ -27,6 +27,7 @@ async function get(url) {
         r: c.numReunion ?? re.numOfficiel, c: c.numOrdre,
         hippo: re.hippodrome?.libelleCourt || c.hippodrome?.libelleCourt || "Réunion " + re.numOfficiel,
         lib: c.libelle || "", heure: hhmm(c.heureDepart), disc: (c.discipline || "").replace(/_/g, " "),
+        paris: (c.paris || []).map(x => x.codePari || x.typePari).filter(Boolean),
       });
   if (!list.length) throw new Error("Aucune course dans le programme.");
   console.log(list.length, "courses au programme");

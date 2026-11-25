@@ -17,10 +17,11 @@ jobs:
         with:
           node-version: 20
       - run: node generer.js
+      - run: node paris.js
       - name: Publier courses.json
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add courses.json
+          git add courses.json paris.json
           git diff --cached --quiet || git commit -m "Courses du jour"
           git push
